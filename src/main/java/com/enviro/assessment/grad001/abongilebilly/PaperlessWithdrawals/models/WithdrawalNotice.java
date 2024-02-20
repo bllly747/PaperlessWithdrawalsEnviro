@@ -1,6 +1,7 @@
 
 package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,6 +26,7 @@ public class WithdrawalNotice {
 
     private String BankDetails;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "productId")
     private Product product;

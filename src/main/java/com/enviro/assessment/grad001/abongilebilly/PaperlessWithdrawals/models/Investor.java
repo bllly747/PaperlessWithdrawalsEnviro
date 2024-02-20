@@ -1,5 +1,6 @@
 package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -28,6 +29,7 @@ public class Investor {
 
     private String address;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "investor")
     private List<Product> product;
 }

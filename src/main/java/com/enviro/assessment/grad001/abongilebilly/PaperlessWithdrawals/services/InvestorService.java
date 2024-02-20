@@ -12,6 +12,9 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 @Builder
 @Service
+
+// This class performs all the business logic requirements
+// in our case it will validate the age before the Investor is called
 public class InvestorService {
     private InvestorRepository investorRepository;
 

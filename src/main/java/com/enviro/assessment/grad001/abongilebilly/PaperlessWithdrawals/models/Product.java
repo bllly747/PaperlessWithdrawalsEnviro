@@ -1,5 +1,7 @@
 package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,12 +27,14 @@ public class Product {
 
     private Long currentBalance;
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(
             name = "investorID"
     )
     private Investor investor;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "product")
     private List<WithdrawalNotice> withdrawalNotice;
 }
