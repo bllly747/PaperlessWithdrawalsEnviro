@@ -1,8 +1,6 @@
 package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.controllers;
 
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.Investor;
-import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.Product;
-import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.dtos.InvestorDto;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.repositories.InvestorRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -36,8 +34,6 @@ public class InvestorController {
             @RequestBody Investor investor
     )
     {
-
-
         return investorRepository.save(investor);
     }
 

@@ -2,6 +2,7 @@ package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.control
 
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.Product;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.repositories.ProductRepository;
+import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.services.ProductService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +17,13 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    private ProductRepository productRepository;
+    private ProductService productService;
 
     @GetMapping("/products")
     public List<Product> getAll()
     {
-        return productRepository.findAll();
+
+        return productService.getAll();
     }
 
     @PostMapping("/products")
@@ -29,6 +31,6 @@ public class ProductController {
             @RequestBody Product product
     )
     {
-        return productRepository.save(product);
+        return productService.addProduct(product);
     }
 }

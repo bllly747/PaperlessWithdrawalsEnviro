@@ -3,6 +3,7 @@ package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.control
 
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.WithdrawalNotice;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.repositories.WithdrawalNoticeRepository;
+import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.services.WithdrawalNoticeService;
 import lombok.Data;
 import lombok.With;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,12 +19,13 @@ import java.util.List;
 public class WithdrawalNoticeController {
     @Autowired
 
-    private WithdrawalNoticeRepository withdrawalNoticeRepository;
+    private WithdrawalNoticeService withdrawalNoticeService;
 
     @GetMapping("/notices")
     public List<WithdrawalNotice> getNotice()
     {
-        return withdrawalNoticeRepository.findAll();
+
+        return withdrawalNoticeService.getNotice();
     }
 
     @PostMapping("/notices")
@@ -31,6 +33,6 @@ public class WithdrawalNoticeController {
             @RequestBody WithdrawalNotice withdrawalNotice
     )
     {
-        return withdrawalNoticeRepository.save(withdrawalNotice);
+        return withdrawalNoticeService.addNotice(withdrawalNotice);
     }
 }
