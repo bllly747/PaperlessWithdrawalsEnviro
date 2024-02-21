@@ -12,16 +12,17 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class WithdrawalNoticeDto{
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String address;
-    private Integer age;
-    private String investmentType;
-    private String investmentName;
-    private Integer currentBalance;
+
+
     private Integer withdrawalAmount;
-    private String bankDetails;
+
+    private LocalDateTime dateTime;
+
+    private String transactionStatus;
+
+    private String BankDetails;
+
+    private Integer productId;
 
     
 }

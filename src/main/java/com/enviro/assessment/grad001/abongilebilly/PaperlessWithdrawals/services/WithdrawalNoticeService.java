@@ -1,19 +1,19 @@
 package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.services;
 
-import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.InformationMapper;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.Investor;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.Product;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.WithdrawalNotice;
+import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.dtos.WithdrawalNoticeDto;
+import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.mappers.WithdrawalNoticeMapper;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.repositories.InvestorRepository;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.repositories.ProductRepository;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.repositories.WithdrawalNoticeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class WithdrawalNoticeService {
@@ -24,21 +24,30 @@ public class WithdrawalNoticeService {
     private ProductRepository productRepository;
     @Autowired
     private InvestorRepository investorRepository;
-
-
-
-
-    public List<WithdrawalNotice> getNotice()
+    WithdrawalNoticeMapper mapper = new WithdrawalNoticeMapper();
+    //Getting List of Dtos by Mappeing First notice->noticedto
+    public List<WithdrawalNoticeDto> getNotice()
     {
-        return withdrawalNoticeRepository.findAll();
+        List<WithdrawalNotice> notices = withdrawalNoticeRepository.findAll();
+        return notices.stream()
+                .map((notice)->mapper.mapToNoticeDto(notice))
+                .collect(Collectors.toList());
     }
 
-    public WithdrawalNotice addNotice(WithdrawalNotice withdrawalNotice)
+    //Adding List of Dtos by Mappeing First notice->noticedto
+    public WithdrawalNoticeDto addNotice(WithdrawalNoticeDto withdrawalNoticeDto)
     {
-        Optional<Product> product = productRepository.findById(withdrawalNotice.getProduct().getId());
+        WithdrawalNotice withdrawalNotice =  new WithdrawalNotice();
+        withdrawalNotice = mapper.mapToNotice(withdrawalNoticeDto);
+        Optional<Product> product = productRepository.findById(withdrawalNoticeDto.getProductId());
         Optional<Investor> investor = investorRepository.findById(product.get().getInvestor().getId());
+        if(investor.get().getAge() > 65)
+        {
+            withdrawalNotice.setTransactionStatus("Success");
+        }
+        withdrawalNoticeRepository.save(withdrawalNotice);
 
-        return withdrawalNoticeRepository.save(withdrawalNotice);
+        return withdrawalNoticeDto;
     }
 
 }
