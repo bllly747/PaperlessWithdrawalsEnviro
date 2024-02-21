@@ -2,6 +2,7 @@ package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.control
 
 
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.WithdrawalNotice;
+import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.dtos.WithdrawalNoticeDto;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.repositories.WithdrawalNoticeRepository;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.services.WithdrawalNoticeService;
 import lombok.Data;
@@ -29,7 +30,7 @@ public class WithdrawalNoticeController {
     }
 
     @PostMapping("/notices")
-    public WithdrawalNotice addNotice(
+    public WithdrawalNoticeDto addNotice(
             @RequestBody WithdrawalNotice withdrawalNotice
     )
     {

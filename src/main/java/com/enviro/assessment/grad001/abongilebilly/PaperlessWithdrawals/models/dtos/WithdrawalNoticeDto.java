@@ -12,7 +12,9 @@ import java.time.LocalDateTime;
 
 public class WithdrawalNoticeDto {
 
-    private Long withdrawalAmount;
+    private Integer amountWithdrawn;
+    private Integer currentBalance;
+    private String transactionStatus;
 
-    private LocalDateTime dateTime;
+    
 }

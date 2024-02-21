@@ -25,7 +25,7 @@ public class Product {
 
     private String name;
 
-    private Long currentBalance;
+    private Integer currentBalance;
 
     @JsonBackReference
     @ManyToOne

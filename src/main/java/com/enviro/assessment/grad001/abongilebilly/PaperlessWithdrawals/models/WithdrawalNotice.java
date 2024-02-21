@@ -20,7 +20,7 @@ public class WithdrawalNotice {
     @GeneratedValue
     private Integer id;
 
-    private Long withdrawalAmount;
+    private Integer withdrawalAmount;
 
     private LocalDateTime dateTime;
 
