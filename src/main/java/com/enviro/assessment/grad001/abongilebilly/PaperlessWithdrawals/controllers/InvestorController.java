@@ -2,6 +2,7 @@ package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.control
 
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.Investor;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.repositories.InvestorRepository;
+import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.services.InvestorService;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +20,14 @@ import java.util.List;
 public class InvestorController {
 
     @Autowired
-    private InvestorRepository investorRepository;
+    private InvestorService investorService;
 
 
     @GetMapping("/investors")
     public List<Investor> getInvestors()
     {
 
-        return investorRepository.findAll();
+        return investorService.getInvestors();
     }
 
     @PostMapping("/investors")
@@ -34,7 +35,7 @@ public class InvestorController {
             @RequestBody Investor investor
     )
     {
-        return investorRepository.save(investor);
+        return investorService.addInvestor(investor);
     }
 
 
