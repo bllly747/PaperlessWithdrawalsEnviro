@@ -2,6 +2,7 @@ package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,5 +17,5 @@ public class InvestorDto {
     private Integer age;
     private String email;
     private String address;
-    private Integer productId;
+    //private Integer productId;
 }

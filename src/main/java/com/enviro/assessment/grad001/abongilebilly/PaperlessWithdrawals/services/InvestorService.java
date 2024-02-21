@@ -13,13 +13,16 @@ public class InvestorService {
     @Autowired
     private InvestorRepository investorRepository;
 
+
     public List<Investor> getInvestors()
     {
+
         return investorRepository.findAll();
     }
 
     public Investor addInvestor(Investor investor)
     {
+
         return investorRepository.save(investor);
     }
 

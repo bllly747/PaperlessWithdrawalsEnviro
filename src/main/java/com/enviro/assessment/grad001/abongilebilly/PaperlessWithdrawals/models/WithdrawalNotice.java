@@ -24,6 +24,8 @@ public class WithdrawalNotice {
 
     private LocalDateTime dateTime;
 
+    private String transactionStatus;
+
     private String BankDetails;
 
     @JsonBackReference

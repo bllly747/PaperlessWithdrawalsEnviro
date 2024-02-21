@@ -2,6 +2,7 @@ package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -9,12 +10,18 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+public class WithdrawalNoticeDto{
 
-public class WithdrawalNoticeDto {
-
-    private Integer amountWithdrawn;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String address;
+    private Integer age;
+    private String investmentType;
+    private String investmentName;
     private Integer currentBalance;
-    private String transactionStatus;
+    private Integer withdrawalAmount;
+    private String bankDetails;
 
     
 }

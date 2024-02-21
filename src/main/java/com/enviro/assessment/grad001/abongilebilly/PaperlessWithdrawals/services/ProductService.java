@@ -12,7 +12,6 @@ public class ProductService {
 
     @Autowired
     private ProductRepository productRepository;
-
     public List<Product> getAll()
     {
         return productRepository.findAll();
@@ -20,6 +19,8 @@ public class ProductService {
 
     public Product addProduct(Product product)
     {
+
+
         return productRepository.save(product);
     }
 }
