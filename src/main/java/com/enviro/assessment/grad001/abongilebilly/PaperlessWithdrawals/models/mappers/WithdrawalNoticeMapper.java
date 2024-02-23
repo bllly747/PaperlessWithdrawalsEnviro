@@ -13,6 +13,7 @@ public class WithdrawalNoticeMapper {
         withdrawalNoticeDto.setTransactionStatus(withdrawalNotice.getTransactionStatus());
         withdrawalNoticeDto.setDateTime(withdrawalNotice.getDateTime());
         withdrawalNoticeDto.setProductId(withdrawalNotice.getProduct().getId());
+        withdrawalNoticeDto.setBankDetails(withdrawalNotice.getBankDetails());
 
         return withdrawalNoticeDto;
     }
@@ -26,6 +27,7 @@ public class WithdrawalNoticeMapper {
         withdrawalNotice.setProduct(product);
         withdrawalNotice.setTransactionStatus(withdrawalNoticeDto.getTransactionStatus());
         withdrawalNotice.setDateTime(withdrawalNoticeDto.getDateTime());
+        withdrawalNotice.setBankDetails(withdrawalNoticeDto.getBankDetails());
 
         return withdrawalNotice;
     }

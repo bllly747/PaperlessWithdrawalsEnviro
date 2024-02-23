@@ -1,6 +1,7 @@
 package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.controllers;
 
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.Investor;
+import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.dtos.InvestorDto;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.repositories.InvestorRepository;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.services.InvestorService;
 import lombok.AllArgsConstructor;
@@ -24,18 +25,18 @@ public class InvestorController {
 
 
     @GetMapping("/investors")
-    public List<Investor> getInvestors()
+    public List<InvestorDto> getInvestors()
     {
 
         return investorService.getInvestors();
     }
 
     @PostMapping("/investors")
-    public Investor addInvestor(
-            @RequestBody Investor investor
+    public InvestorDto addInvestor(
+            @RequestBody InvestorDto investorDto
     )
     {
-        return investorService.addInvestor(investor);
+        return investorService.addInvestor(investorDto);
     }
 
 

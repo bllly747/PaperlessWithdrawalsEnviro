@@ -1,6 +1,7 @@
 package com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.controllers;
 
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.Product;
+import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.models.dtos.ProductDto;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.repositories.ProductRepository;
 import com.enviro.assessment.grad001.abongilebilly.PaperlessWithdrawals.services.ProductService;
 import lombok.Data;
@@ -20,17 +21,18 @@ public class ProductController {
     private ProductService productService;
 
     @GetMapping("/products")
-    public List<Product> getAll()
+    public List<ProductDto> getAll()
     {
+
 
         return productService.getAll();
     }
 
     @PostMapping("/products")
-    public Product addProduct(
-            @RequestBody Product product
+    public ProductDto addProduct(
+            @RequestBody ProductDto productDto
     )
     {
-        return productService.addProduct(product);
+        return productService.addProduct(productDto);
     }
 }

@@ -17,5 +17,5 @@ public class InvestorDto {
     private Integer age;
     private String email;
     private String address;
-    //private Integer productId;
+    private Integer id;
 }

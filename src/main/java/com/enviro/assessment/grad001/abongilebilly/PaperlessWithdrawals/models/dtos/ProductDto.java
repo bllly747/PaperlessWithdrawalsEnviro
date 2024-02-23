@@ -11,5 +11,6 @@ public class ProductDto{
     private String investmentType;
     private String investmentName;
     private Integer currentBalance;
+    private Integer investorId;
 
 }

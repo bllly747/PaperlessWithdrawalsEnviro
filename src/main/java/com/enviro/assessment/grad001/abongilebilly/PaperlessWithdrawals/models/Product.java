@@ -23,7 +23,7 @@ public class Product {
 
     private String investmentType;
 
-    private String name;
+    private String investmentName;
 
     private Integer currentBalance;
 

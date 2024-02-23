@@ -41,9 +41,24 @@ public class WithdrawalNoticeService {
         withdrawalNotice = mapper.mapToNotice(withdrawalNoticeDto);
         Optional<Product> product = productRepository.findById(withdrawalNoticeDto.getProductId());
         Optional<Investor> investor = investorRepository.findById(product.get().getInvestor().getId());
-        if(investor.get().getAge() > 65)
+
+        // checking if withdrawal amount will invalidate the transaction
+        if(withdrawalNotice.getWithdrawalAmount() > product.get().getCurrentBalance() || withdrawalNotice.getWithdrawalAmount()> (product.get().getCurrentBalance()*0.90))
         {
-            withdrawalNotice.setTransactionStatus("Success");
+            withdrawalNotice.setTransactionStatus("Not Approved");
+        }
+        else {
+            if(product.get().getInvestmentType().equals("Retirement"))
+            {
+                if (investor.get().getAge() < 65) {
+                    withdrawalNotice.setTransactionStatus("Not Approved");
+                }
+                else{
+                    withdrawalNotice.setTransactionStatus("Approved");
+                }
+
+            }
+
         }
         withdrawalNoticeRepository.save(withdrawalNotice);
 
